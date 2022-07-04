@@ -12,12 +12,28 @@ parser.add_argument("-b", "--browser", help="| Choose Chrome Browser. Only firef
 args = parser.parse_args()
 
 class Driver:
-     
+    '''
+     Webdriver Manager | Chrome and Firefox Browser
+    '''
+    
     def __init__(self) -> None:
+        '''
+        Attributes:\n
+        --------------------------------
+        @attr: self.browser | from --browser argument
+        @attr: self.parent_url | "url" from start_browser method **kwargs
+        '''
         self.browser = args.browser
         self.parent_url = ""
 
     def start_browser(self, **kwargs):
+        '''
+        Start browser based on the argument --browser.\n
+        Parent URL is also placed here.\n
+        --------------------------------
+        @params: **kwargs | url -> this will serve as the parent_url
+        @return: web_driver | IWebDriver from web driver manager
+        '''
         self.parent_url =  "https://www.google.com/" if kwargs.get("url") == None else kwargs.get("url")
         
         if self.browser == "chrome":
@@ -77,6 +93,5 @@ class Driver:
                     break
                 except Exception as e:
                     print (e)
-                    count += 1
-                    
+                    count += 1      
         return web_driver
