@@ -17,12 +17,13 @@ class Locators:
     def homepage(var1=None, var2=None, var3=None):
             '''
             Current Page Address Methods:  
-                * [search_box, google_search_button]  
+                * [search_box, google_search_button, search_text, result_page]  
             '''
             return { 
                     "search_box" : (By.NAME, "q"),
-                    "google_search_button" : (By.NAME, "btnK")
+                    "google_search_button" : (By.NAME, "btnK"),
+                    "search_text" : (By.XPATH, f"//h3[text()='{var1}']"),
+                    "result_page" : (By.XPATH, "//h1")
                     }
-        
        
         
